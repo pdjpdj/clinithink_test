@@ -2,3 +2,14 @@
   margin: 5rem;
 }
 
+.selected-category {
+  color: red;
+}
+
+.category-items {
+  margin-top: 2rem;
+}
+
+.category-item {
+  margin-left: 2rem;
+}

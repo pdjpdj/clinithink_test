@@ -27,15 +27,16 @@ const Part1: React.FC<Part1Props> = (props: Part1Props) => {
       <div>
         <button onClick={toggleSorted}>{sorted ? 'Original Order' : 'Sort Titles Alphabetically'}</button>
         {
-          data.items.sort((a: DataItem, b: DataItem) => {
-            if (sorted) {
-              return a.title > b.title ? 1 : -1;
-            }
-            return a.id - b.id;
-          }).map(item => (
-            <div> {item.title} </div>
-          )
-          )
+          data.items
+            .sort((a: DataItem, b: DataItem) => {
+              if (sorted) {
+                return a.title > b.title ? 1 : -1;
+              }
+              return a.id - b.id;
+            })
+            .map(item => (
+              <div> {item.title} </div>
+            ))
         }
       </div>
         
