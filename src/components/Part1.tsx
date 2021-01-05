@@ -6,13 +6,8 @@ interface Part1Props {
 }
 
 const Part1: React.FC<Part1Props> = (props: Part1Props) => {
-  const [sorted, setSorted] = useState(false);
   const [expand, setExpand] = useState(false);
   const {data} = props;
-
-  const toggleSorted = () => {
-    setSorted(!sorted);
-  }
 
   const toggleExpand = () => {
     setExpand(!expand);
@@ -25,17 +20,13 @@ const Part1: React.FC<Part1Props> = (props: Part1Props) => {
       {expand
       ?
       <div>
-        <button onClick={toggleSorted}>{sorted ? 'Original Order' : 'Sort Titles Alphabetically'}</button>
         {
           data.items
-            .sort((a: DataItem, b: DataItem) => {
-              if (sorted) {
-                return a.title > b.title ? 1 : -1;
-              }
-              return a.id - b.id;
-            })
+            .sort((a: DataItem, b: DataItem) =>
+                a.title > b.title ? 1 : -1
+            )
             .map(item => (
-              <div> {item.title} </div>
+              <div>{`● ${item.title}`}</div>
             ))
         }
       </div>

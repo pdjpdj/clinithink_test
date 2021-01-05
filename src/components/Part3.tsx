@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Data, DataItem } from '../App';
 import '../App.css';
 
-interface Part2Props {
+interface Part3Props {
   data: Data,
 }
 
-const Part2: React.FC<Part2Props> = (props: Part2Props) => {
+const Part3: React.FC<Part3Props> = (props: Part3Props) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [expand, setExpand] = useState(false);
   const {data} = props;
@@ -23,20 +23,25 @@ const Part2: React.FC<Part2Props> = (props: Part2Props) => {
     }
   }
 
-  const categorySet = new Set(data.items.map((item: DataItem) => item.category));
+  const categoryArray: string[] = Array.from(new Set(data.items.map((item: DataItem) => item.category)));
+  const favourites = data.favourite_categories;
 
   return (
     <div>
       <div onClick={toggleExpand}>
-        <h1>Category List (click to {expand ? 'hide' : 'view'})</h1>
+        <h1>Favourite List (click to {expand ? 'hide' : 'view'})</h1>
       </div>
       {expand
       ?
       <div>
         {
-          Array.from(categorySet).map(category => (
-            <div onClick={() => toggleCategory(category)} className={selectedCategory === category ? 'selected-category' : ''}>{`● ${category}`}</div>
-          ))
+          categoryArray
+            .sort((a: string) => favourites.includes(a) ? -1 : 1)
+            .map(category => (
+              <div onClick={() => toggleCategory(category)} className={selectedCategory === category ? 'selected-category' : ''}>
+                {favourites.includes(category) ? '★ ' : '● '}{category}
+              </div>
+            ))
         }
         <div className='category-items'>
           {
@@ -59,4 +64,4 @@ const Part2: React.FC<Part2Props> = (props: Part2Props) => {
   );
 };
 
-export default Part2;
+export default Part3;

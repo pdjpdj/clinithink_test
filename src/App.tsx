@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Part1 from './components/Part1'
 import Part2 from './components/Part2';
+import Part3 from './components/Part3';
 import data from './data/data.json';
 
 export interface DataItem {
@@ -19,6 +20,7 @@ function App() {
     <div className="App">
       <Part1 data={data} />
       <Part2 data={data} />
+      <Part3 data={data} />
     </div>
   );
 }
