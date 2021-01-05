@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Part1 from './components/Part1'
+import data from './data/data.json';
+
+export interface DataItem {
+  title: string;
+  category: string;
+  id: number;
+}
+export interface Data {
+  items: DataItem[];
+  favourite_categories: string[];
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Part1 data={data} />
     </div>
   );
 }
