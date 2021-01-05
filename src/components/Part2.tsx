@@ -8,12 +8,7 @@ interface Part2Props {
 
 const Part2: React.FC<Part2Props> = (props: Part2Props) => {
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [expand, setExpand] = useState(false);
   const {data} = props;
-
-  const toggleExpand = () => {
-    setExpand(!expand);
-  }
 
   const toggleCategory = (category: string) => {
     if (category === selectedCategory) {
@@ -27,34 +22,23 @@ const Part2: React.FC<Part2Props> = (props: Part2Props) => {
 
   return (
     <div>
-      <div onClick={toggleExpand}>
-        <h1>Category List (click to {expand ? 'hide' : 'view'})</h1>
-      </div>
-      {expand
-      ?
-      <div>
+      {
+        Array.from(categorySet).map(category => (
+          <div onClick={() => toggleCategory(category)} className={selectedCategory === category ? 'selected-category' : ''}>{`● ${category}`}</div>
+        ))
+      }
+      <div className='category-items'>
         {
-          Array.from(categorySet).map(category => (
-            <div onClick={() => toggleCategory(category)} className={selectedCategory === category ? 'selected-category' : ''}>{`● ${category}`}</div>
-          ))
+          data.items
+            .filter((item: DataItem) => selectedCategory === '' ? true : item.category === selectedCategory)
+            .sort((a: DataItem, b: DataItem) =>
+              a.title > b.title ? 1 : -1
+            )
+            .map((item: DataItem) => (
+              <div className='category-item'>{`● ${item.title}`}</div>
+            ))
         }
-        <div className='category-items'>
-          {
-            data.items
-              .filter((item: DataItem) => selectedCategory === '' ? true : item.category === selectedCategory)
-              .sort((a: DataItem, b: DataItem) =>
-                a.title > b.title ? 1 : -1
-              )
-              .map((item: DataItem) => (
-                <div className='category-item'>{`● ${item.title}`}</div>
-              ))
-          }
-        </div>
       </div>
-        
-      : null
-    }
-      
     </div>
   );
 };
