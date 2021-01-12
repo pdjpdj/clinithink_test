@@ -6,10 +6,20 @@
   color: red;
 }
 
+ul {
+  list-style-position: inside;
+}
+
+.favourite-category {
+  list-style-type: none;
+}
+
+.favourite-category::before {
+  list-style-type: none;
+  content: '★\0009';
+}
+
 .category-items {
   margin-top: 2rem;
 }
 
-.category-item {
-  margin-left: 2rem;
-}

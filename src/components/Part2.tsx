@@ -21,13 +21,18 @@ const Part2: React.FC<Part2Props> = (props: Part2Props) => {
   const categorySet = new Set(data.items.map((item: DataItem) => item.category));
 
   return (
-    <div>
+    <ul>
       {
         Array.from(categorySet).map(category => (
-          <div onClick={() => toggleCategory(category)} className={selectedCategory === category ? 'selected-category' : ''}>{`● ${category}`}</div>
+          <li 
+            onClick={() => toggleCategory(category)} 
+            className={selectedCategory === category ? 'selected-category' : ''} 
+            key={category}>
+              {category}
+          </li>
         ))
       }
-      <div className='category-items'>
+      <ul className='category-items'>
         {
           data.items
             .filter((item: DataItem) => selectedCategory === '' ? true : item.category === selectedCategory)
@@ -35,11 +40,11 @@ const Part2: React.FC<Part2Props> = (props: Part2Props) => {
               a.title > b.title ? 1 : -1
             )
             .map((item: DataItem) => (
-              <div className='category-item'>{`● ${item.title}`}</div>
+              <li key={item.id}>{item.title}</li>
             ))
         }
-      </div>
-    </div>
+      </ul>
+    </ul>
   );
 };
 

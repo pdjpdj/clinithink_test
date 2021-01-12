@@ -22,18 +22,21 @@ const Part3: React.FC<Part3Props> = (props: Part3Props) => {
   const favourites = data.favourite_categories;
 
   return (
-    <div>
+    <ul>
 
       {
         categoryArray
           .sort((a: string) => favourites.includes(a) ? -1 : 1)
           .map(category => (
-            <div onClick={() => toggleCategory(category)} className={selectedCategory === category ? 'selected-category' : ''}>
-              {favourites.includes(category) ? '★ ' : '● '}{category}
-            </div>
+            <li 
+                onClick={() => toggleCategory(category)} 
+                className={`${selectedCategory === category ? 'selected-category' : ''} ${favourites.includes(category) ? 'favourite-category' : ''}`} 
+                key={category}>
+              {category}
+            </li>
           ))
       }
-      <div className='category-items'>
+      <ul className='category-items'>
         {
           data.items
             .filter((item: DataItem) => selectedCategory === '' ? true : item.category === selectedCategory)
@@ -41,11 +44,11 @@ const Part3: React.FC<Part3Props> = (props: Part3Props) => {
               a.title > b.title ? 1 : -1
             )
             .map((item: DataItem) => (
-              <div className='category-item'>{`● ${item.title}`}</div>
+              <li key={item.id}>{item.title}</li>
             ))
         }
-      </div>      
-    </div>
+      </ul>      
+    </ul>
   );
 };
 

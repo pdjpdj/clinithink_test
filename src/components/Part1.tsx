@@ -9,17 +9,17 @@ const Part1: React.FC<Part1Props> = (props: Part1Props) => {
   const {data} = props;
 
   return (
-    <div>
+    <ul>
       {
         data.items
           .sort((a: DataItem, b: DataItem) =>
               a.title > b.title ? 1 : -1
           )
           .map(item => (
-            <div>{`● ${item.title}`}</div>
+            <li key={item.id}>{item.title}</li>
           ))
       }      
-    </div>
+    </ul>
   );
 };
 

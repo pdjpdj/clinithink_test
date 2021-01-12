@@ -19,17 +19,11 @@ function App() {
   const [part, setPart] = useState(0);
   return (
     <div className="App">
-      <div onClick={() => setPart(1)}>
-        <h1>Item List {part !== 1 ? '(click to view)' : ''}</h1>
-      </div>
+      <h1 onClick={() => setPart(1)}>Item List {part !== 1 ? '(click to view)' : ''}</h1>
       { part === 1 ? <Part1 data={data} /> : null}
-      <div onClick={() => setPart(2)}>
-        <h1>Category List {part !== 2 ? '(click to view)' : ''}</h1>
-      </div>
+      <h1 onClick={() => setPart(2)}>Category List {part !== 2 ? '(click to view)' : ''}</h1>
       { part === 2 ? <Part2 data={data} /> : null}
-      <div onClick={() => setPart(3)}>
-        <h1>Favourite List {part !== 3 ? '(click to view)' : ''}</h1>
-      </div>
+      <h1 onClick={() => setPart(3)}>Favourite List {part !== 3 ? '(click to view)' : ''}</h1>
       { part === 3 ? <Part3 data={data} /> : null}
     </div>
   );
