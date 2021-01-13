@@ -4,7 +4,6 @@ import Part1 from './components/Part1'
 import Part2 from './components/Part2';
 import Part3 from './components/Part3';
 import data from './data/data.json';
-
 export interface DataItem {
   title: string;
   category: string;

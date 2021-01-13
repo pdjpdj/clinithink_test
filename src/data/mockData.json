@@ -1,0 +1,38 @@
+{
+  "items": [
+      {
+          "title": "item2",
+          "category": "cat1",
+          "id": 0
+      },
+      {
+          "title": "item1",
+          "category": "cat1",
+          "id": 1
+      },
+      {
+          "title": "item3",
+          "category": "cat2",
+          "id": 2
+      },
+      {
+          "title": "item4",
+          "category": "cat3",
+          "id": 3
+      },
+      {
+          "title": "item5",
+          "category": "cat3",
+          "id": 4
+      },
+      {
+          "title": "item6",
+          "category": "cat3",
+          "id": 5
+      }
+  ],
+  "favourite_categories": [
+      "cat2",
+      "cat3"
+  ]
+}
